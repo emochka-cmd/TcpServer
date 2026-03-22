@@ -1,4 +1,5 @@
 #include <cerrno>
+#include <cstddef>
 #include <cstring>
 #include <iostream>
 #include <sys/epoll.h>
@@ -47,6 +48,12 @@ public:
 
         if (mod_res == -1) {
             std::cerr << "Error in epoll ctl mod: " << strerror(errno) << "\n";
+        }
+    }
+
+    void epoll_del (const int& fd) {
+        if (epoll_ctl(epoll_sock, EPOLL_CTL_DEL, fd, NULL) == -1) {
+            std::cerr << "Error in epoll ctl del: " << strerror(errno) << "\n";
         }
     }
 
