@@ -106,6 +106,10 @@ public:
         return client_fd;  
     }
 
+    int get_server_fd() {
+        return sock;
+    }
+
     explicit Acceptor (
         int domain = AF_INET,
         int sock_type = SOCK_STREAM,
