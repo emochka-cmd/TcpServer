@@ -1,5 +1,6 @@
 #include <cerrno>
 #include <cstddef>
+#include <cstdlib>
 #include <cstring>
 #include <iostream>
 #include <sys/epoll.h>
@@ -19,6 +20,7 @@ private:
 
         if (epoll_sock == -1) {
             std::cerr << "Error in create epoll: " << strerror(errno) << "\n";
+            exit(EXIT_FAILURE);
         }
     }
 
